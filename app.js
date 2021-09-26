@@ -8,7 +8,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 const logger = require('./logger');
-const webSocket = require('./socket');
+// const webSocket = require('./socket');
+const webSocket = require('./socket-io');
 const indexRouter = require('./routes');
 
 const app = express();
