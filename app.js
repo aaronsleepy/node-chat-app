@@ -8,6 +8,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 const logger = require('./logger');
+const webSocket = require('./socket');
 const indexRouter = require('./routes');
 
 const app = express();
@@ -63,7 +64,9 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), () => {
   // logger.info(`Listening on port ${app.get('port')}`);
   logger.info(`Listening on port ${app.get('port')}`);
 });
+
+webSocket(server);

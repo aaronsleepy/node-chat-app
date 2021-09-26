@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>GIF 채팅방</title>
+  <meta charset="UTF-8">
+  <title>GIF 채팅방</title>
 </head>
 <body>
 <div>F12를 눌러 console 탭과 network 탭을 확인하세요.</div>
+<script>
+  const webSocket = new WebSocket("ws://localhost:8005");
 
+  webSocket.onopen = function() {
+    console.log('Connected to sever via websocket');
+  };
+
+  webSocket.onmessage = function (event) {
+    console.log(`Get message ${event.data} from server`);
+
+    webSocket.send('Messages sent by client');
+  };
+</script>
 </body>
 </html>
